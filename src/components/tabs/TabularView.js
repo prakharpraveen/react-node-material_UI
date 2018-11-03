@@ -39,7 +39,8 @@ class TabularView extends Component {
         age: '',
         weight: '',
         email: '',
-        author: ''
+        author: '',
+        setEmail:''
     };
     componentDidMount() {
         const { getUsersAction } = this.props;
@@ -86,10 +87,20 @@ class TabularView extends Component {
         this.setState({email: e.target.value, isBtn: !emailRegEx.test(e.target.value)})
     }
 
+ 
+    searchEmail = (event) => {
+        this.setState({setEmail:event.target.value }, () => {
+            const { getUsersAction } = this.props;
+            const { setEmail } = this.state;
+            getUsersAction(setEmail);
+        })
+        
+    }
+
 
     render() {
         const { classes, userData } = this.props;
-        const { isDelete, isEdit, name, age, weight, email, author } = this.state;
+        const { isDelete, isEdit, name, age, weight, email, author, setEmail } = this.state;
         return (
             <div>
                 <Paper className={classes.root}>
@@ -99,7 +110,11 @@ class TabularView extends Component {
                                 <TableCell>Name </TableCell>
                                 <TableCell>Age</TableCell>
                                 <TableCell>Weight</TableCell>
-                                <TableCell>Email</TableCell>
+                                <TableCell>
+                                    Email
+                                <TextField id="standard-name" label="Email" className={classes.textField} value={setEmail} onChange={this.searchEmail} margin="normal" />
+
+                                </TableCell>
                                 <TableCell>Author</TableCell>
                                 <TableCell>Actions</TableCell>
                             </TableRow>
