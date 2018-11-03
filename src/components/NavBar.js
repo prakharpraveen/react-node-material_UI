@@ -9,6 +9,7 @@ import HomeIcon from '@material-ui/icons/Home';
 import AddUser from './tabs/AddUser';
 import TabularView from './tabs/TabularView';
 import AnalyticalView from "./tabs/AnalyticalView";
+import Payment from "./tabs/Payment";
 
 function TabContainer({ children, dir }) {
   return (
@@ -58,6 +59,7 @@ class NavBar extends React.Component {
             <Tab label="Add User" />
             <Tab label="Tabular View" />
             <Tab label="Analitical View" />
+            <Tab label="Payment" />
           </Tabs>
         </AppBar>
         <SwipeableViews
@@ -68,7 +70,8 @@ class NavBar extends React.Component {
           <TabContainer dir={theme.direction}>Home</TabContainer>
           <TabContainer dir={theme.direction}><AddUser /></TabContainer>
           <TabContainer dir={theme.direction}><TabularView /></TabContainer>
-          <TabContainer dir={theme.direction}><AnalyticalView hhhhh /></TabContainer>
+          <TabContainer dir={theme.direction}><AnalyticalView /></TabContainer>
+          <TabContainer dir={theme.direction}><Payment /></TabContainer>
         </SwipeableViews>
       </div>
     );
