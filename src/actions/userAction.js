@@ -16,8 +16,12 @@ export const addUserDataAction = formData => dispatch => {
 };
 
 export const getUsersAction = formData => dispatch => {
+    console.log(formData);
+    
     axios
-        .get("http://localhost:7000/user", {})
+        .get("http://localhost:7000/user", {
+            params: {data:formData}
+        })
         .then(function (response) {
             dispatch({
                 type: "ADD_USER",
